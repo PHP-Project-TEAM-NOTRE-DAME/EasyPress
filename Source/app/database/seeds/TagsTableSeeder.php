@@ -4,9 +4,17 @@ class TagsTableSeeder extends BaseSeeder {
 
 	public function run()
 	{
-		for ($i=0; $i < 20; $i++) { 
+		$tagNames = [];
+		while (count($tagNames) <= 20) { 
+			$currentWord = $this->faker->word();
+			if (in_array($currentWord, $tagNames)) {
+				continue;
+			}
+
+			array_push($tagNames, $currentWord);
+
 			Tag::create([
-				'name' => $this->faker->word()
+				'name' => $currentWord
 			]);
 		}
 	}

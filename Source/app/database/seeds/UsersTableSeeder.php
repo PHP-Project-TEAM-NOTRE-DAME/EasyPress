@@ -4,9 +4,17 @@ class UsersTableSeeder extends BaseSeeder {
 
 	public function run()
 	{
-		for ($i=0; $i < 10; $i++) { 
+		$userEmails = [];
+		while (count($userEmails) <= 10) { 
+			$currentEmail = $this->faker->email();
+			if (in_array($currentEmail, $userEmails)) {
+				continue;
+			}
+
+			array_push($userEmails, $currentEmail);
+
 			User::create([
-				'email' => $this->faker->email(), // TODO: Secure unique emails!
+				'email' => $currentEmail,
 				'password' => $this->faker->sha256()
 			]);
 		}
