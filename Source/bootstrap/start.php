@@ -24,9 +24,11 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 
+//dd(gethostname()); // Uncomment to find the hostname and replace 'Precision' or add it into the array
+
 $env = $app->detectEnvironment(array(
 
-	'local' => array('homestead'),
+	'local' => array('Precision'),
 
 ));
 
