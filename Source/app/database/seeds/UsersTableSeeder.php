@@ -7,8 +7,9 @@ class UsersTableSeeder extends BaseSeeder {
         $userEmails = [];
         while (count($userEmails) <= 10) { 
             $currentEmail = $this->faker->email();
+            
             if (in_array($currentEmail, $userEmails)) {
-                    continue;
+                continue;
             }
 
             array_push($userEmails, $currentEmail);
