@@ -13,7 +13,7 @@
                                 {{ $post->content }}
                             </h3>
                         </a>
-                        <p class="post-meta">Posted by <a href="#">{{ $post->user->email }}</a> on {{ $post->created_at }}</p>
+                        <p class="post-meta">Posted by <a href="#">{{ $post->user->name }}</a> on {{ $post->created_at }}</p>
                     </div>
                     <hr>
                 @endforeach
