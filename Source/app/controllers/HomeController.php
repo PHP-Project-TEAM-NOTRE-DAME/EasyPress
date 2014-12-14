@@ -4,6 +4,8 @@ class HomeController extends BaseController {
 
 	public function index()
 	{
-		return View::make('home.index');
+		$latestPosts = Post::orderBy('created_at', 'desc')->take(4)->get();
+
+		return View::make('home.index')->with('posts', $latestPosts);
 	}
 }
