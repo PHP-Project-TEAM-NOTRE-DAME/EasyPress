@@ -184,13 +184,16 @@
     </footer>
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+<!--    <script src="js/jquery.js"></script>-->
+    {{ HTML::script('js/jquery.js'); }}
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+<!--    <script src="js/bootstrap.min.js"></script>-->
+    {{ HTML::script('js/bootstrap.min.js'); }}
 
     <!-- Custom Theme JavaScript -->
-    <script src="js/clean-blog.min.js"></script>
+<!--    <script src="js/clean-blog.min.js"></script>-->
+    {{ HTML::script('js/clean-blog.min.js'); }}
 
 </body>
 
