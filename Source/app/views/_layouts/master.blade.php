@@ -11,11 +11,11 @@
 
     <title>EasyPress</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/clean-blog.min.css" rel="stylesheet">
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    {{ HTML::style('css/bootstrap.min.css') }}
+    {{ HTML::style('css/clean-blog.min.css') }}
+    {{ HTML::style('http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css') }}
+    {{ HTML::style('http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic') }}
+    {{ HTML::style('http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800') }}
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -66,7 +66,7 @@
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('img/home-bg.jpg')">
+    <header class="intro-header" style="background-image: url({{asset('img/home-bg.jpg')}})">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -125,15 +125,12 @@
     </footer>
 
     <!-- jQuery -->
-<!--    <script src="js/jquery.js"></script>-->
     {{ HTML::script('js/jquery.js') }}
 
     <!-- Bootstrap Core JavaScript -->
-<!--    <script src="js/bootstrap.min.js"></script>-->
     {{ HTML::script('js/bootstrap.min.js') }}
 
     <!-- Custom Theme JavaScript -->
-<!--    <script src="js/clean-blog.min.js"></script>-->
     {{ HTML::script('js/clean-blog.min.js') }}
 
 </body>
