@@ -13,6 +13,9 @@
 
 Route::get('/', array('as' => 'home.index', 'uses' => 'HomeController@index'));
 
+Route::get('/post', array('as' => 'post.index', 'uses' => 'PostController@index'));
+Route::get('/post/create', array('as' => 'post.create', 'uses' => 'PostController@create'));
+Route::post('/post', array('as' => 'post.store', 'uses' => 'PostController@store'));
 Route::get('/post/{id}', array('as' => 'post.show', 'uses' => 'PostController@show'));
 Route::get('/user/{id}/posts', array('as' => 'post.show_by_user', 'uses' => 'PostController@showByUserId'));
 

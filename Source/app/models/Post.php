@@ -2,7 +2,13 @@
 
 class Post extends \Eloquent 
 {
-	protected $fillable = [];
+	protected $fillable = ['title', 'content', 'user_id'];
+        
+        public static $validationRules = [
+		'title' => 'required|min:3',
+		'content' => 'required|min:100',
+		'tags' => 'required'
+	];
 
 	public function commnets() 
 	{

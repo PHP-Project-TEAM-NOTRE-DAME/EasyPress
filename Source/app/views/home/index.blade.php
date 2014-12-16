@@ -14,8 +14,10 @@
 
                         </h3>
                     </a>
-                        <p>Posted by <a href="#">{{ $post->user->username }}</a>
-                            on {{ date('d F, Y', strtotime($post->created_at)) }}</p>
+                        <p>Posted by 
+                            {{ HTML::linkRoute('post.show_by_user', $post->user->username, array($post->user->id)); }}
+                            on {{ date('d F, Y', strtotime($post->created_at)) }}
+                        </p>
                 </div>
                 <hr>
             @endforeach
@@ -23,7 +25,7 @@
             <!-- Pager -->
             <ul class="pager">
                 <li class="next">
-                    <a href="#">Older Posts &rarr;</a>
+                    {{ HTML::linkRoute('post.index', 'All Posts'); }}
                 </li>
             </ul>
         </div>

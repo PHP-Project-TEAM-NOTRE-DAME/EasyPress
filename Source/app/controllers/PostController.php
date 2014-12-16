@@ -10,7 +10,9 @@ class PostController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+            $allPosts = Post::with('user')->get();
+
+            return View::make('post.index')->with('posts', $allPosts);
 	}
 
 	/**
@@ -21,7 +23,7 @@ class PostController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+            return View::make('post.create');
 	}
 
 	/**
@@ -32,7 +34,18 @@ class PostController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+            $data = Input::all();
+
+		$validator = Validator::make($data, Post::$validationRules);
+		if ($validator->fails()) {
+			return Redirect::back()->withErrors($validator)->withInput();
+		}
+                
+                $data['user_id'] = 2;
+
+		Post::create($data);
+
+		return Redirect::route('home.index');
 	}
 
 	/**

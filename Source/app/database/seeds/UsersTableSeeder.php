@@ -15,7 +15,7 @@ class UsersTableSeeder extends BaseSeeder {
             array_push($userEmails, $currentEmail);
 
             User::create([
-                'username' => $this->faker->name(),
+                'username' => $this->faker->userName(),
                 'email' => $currentEmail,
                 'password' => $this->faker->sha256()
             ]);
