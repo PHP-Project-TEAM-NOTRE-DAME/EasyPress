@@ -1,5 +1,6 @@
 /bootstrap/compiled.php
 /vendor
+source/public/lib
 composer.phar
 .env.*.php
 .env.php
@@ -10,3 +11,4 @@ Thumbs.db
 /nbproject/private/
 /nbproject/project.properties
 /nbproject/project.xml
+/Source/public/*.log

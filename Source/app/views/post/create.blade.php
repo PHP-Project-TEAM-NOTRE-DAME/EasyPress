@@ -14,7 +14,7 @@
     	</div>
         <div class="form-group">
             {{ Form::label('tags', 'Tags') }}
-            {{ Form::text('tags', null, ['class' => 'form-control', 'placeholder' => 'Tags']) }}
+            {{ Form::select('tags[]', [], null, ['data-role' => 'tagsinput', 'multiple' => 'multiple']) }}
             {{ $errors->first('tags', '<p class="error text-danger">:message</p>') }}
     	</div>
         <div class="form-group">

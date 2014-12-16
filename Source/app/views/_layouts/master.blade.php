@@ -17,6 +17,7 @@
     {{ HTML::style('http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css') }}
     {{ HTML::style('http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic') }}
     {{ HTML::style('http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800') }}
+    {{ HTML::style('lib/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -133,6 +134,8 @@
 
     <!-- Custom Theme JavaScript -->
     {{-- HTML::script('js/clean-blog.js') --}}
+
+    {{ HTML::script('lib/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}
 
 </body>
 

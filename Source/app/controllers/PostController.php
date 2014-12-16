@@ -34,16 +34,22 @@ class PostController extends \BaseController {
 	 */
 	public function store()
 	{
-            $data = Input::all();
+        $data = Input::all();
 
 		$validator = Validator::make($data, Post::$validationRules);
 		if ($validator->fails()) {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
-                
-                $data['user_id'] = 2;
 
-		Post::create($data);
+		$newPost = Post::create([
+			'title' => $data['title'],
+			'content' => $data['content'],
+			'user_id' => Auth::id()
+		]);
+
+		// TODO: Validate tags!
+		$tags = Tag::whereIn('name', $data['tags'])->lists('id'); 
+        $newPost->tags()->attach($tags);
 
 		return Redirect::route('home.index');
 	}
