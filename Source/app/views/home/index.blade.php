@@ -10,14 +10,15 @@
                                 {{ $post->title }}
                             </h2>
                             <h3 class="post-subtitle">
-                                {{ $post->content }}
+                                {{ substr($post->content, 0, 150) }}...
+
                             </h3>
                         </a>
-                        <p class="post-meta">Posted by <a href="#">{{ $post->user->name }}</a> on {{ date('d F, Y', strtotime($post->created_at)) }}</p>
+                            <p>Posted by <a href="#">{{ $post->user->name }}</a>
+                                on {{ date('d F, Y', strtotime($post->created_at)) }}</p>
                     </div>
                     <hr>
                 @endforeach
-                
 
                 <!-- Pager -->
                 <ul class="pager">

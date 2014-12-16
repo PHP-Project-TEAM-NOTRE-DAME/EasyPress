@@ -1,10 +1,10 @@
 <?php
 
-class PostController extends \BaseController {
+class UserController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
-	 * GET /post
+	 * GET /user
 	 *
 	 * @return Response
 	 */
@@ -15,50 +15,42 @@ class PostController extends \BaseController {
 
 	/**
 	 * Show the form for creating a new resource.
-	 * GET /post/create
+	 * GET /user/create
 	 *
 	 * @return Response
 	 */
 	public function create()
 	{
-		//
+		return View::make('user.create');
 	}
 
 	/**
 	 * Store a newly created resource in storage.
-	 * POST /post
+	 * POST /user
 	 *
 	 * @return Response
 	 */
 	public function store()
 	{
-		//
+		dd(Input::all());
+		return 'stored';
 	}
 
 	/**
 	 * Display the specified resource.
-	 * GET /post/{id}
+	 * GET /user/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function show($id)
 	{
-		$post = Post::find($id);
-
-		return View::make('post.show')->with('post', $post);
-	}
-
-	public function showByUserId($id)
-	{
-		$posts = Post::where('user_id', $id)->get();
-
-		return View::make('post.showByUserId')->with('posts', $posts);
+		//
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /post/{id}/edit
+	 * GET /user/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -70,7 +62,7 @@ class PostController extends \BaseController {
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /post/{id}
+	 * PUT /user/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -82,7 +74,7 @@ class PostController extends \BaseController {
 
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /post/{id}
+	 * DELETE /user/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response

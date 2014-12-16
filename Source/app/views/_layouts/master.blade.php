@@ -39,7 +39,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+                {{ link_to_route('get.home.index', 'EasyPress', null, array('class' => 'navbar-brand')) }}
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -71,9 +71,9 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="site-heading">
-                        <h1>Clean Blog</h1>
+                        <h1>EasyPress</h1>
                         <hr class="small">
-                        <span class="subheading">A Clean Blog Theme by Start Bootstrap</span>
+                        <span class="subheading">An easypress slogan here!</span>
                     </div>
                 </div>
             </div>
