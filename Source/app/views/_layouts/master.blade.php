@@ -39,7 +39,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                {{ link_to_route('get.home.index', 'EasyPress', null, array('class' => 'navbar-brand')) }}
+                {{ link_to_route('home.index', 'EasyPress', null, array('class' => 'navbar-brand')) }}
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -131,7 +131,7 @@
     {{ HTML::script('js/bootstrap.min.js') }}
 
     <!-- Custom Theme JavaScript -->
-    {{ HTML::script('js/clean-blog.min.js') }}
+    {{ HTML::script('js/clean-blog.js') }}
 
 </body>
 

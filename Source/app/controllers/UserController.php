@@ -32,8 +32,18 @@ class UserController extends \BaseController {
 	 */
 	public function store()
 	{
-		dd(Input::all());
-		return 'stored';
+		$data = Input::all();
+
+		$validator = Validator::make($data, User::$validationRules);
+		if ($validator->fails()) {
+			return Redirect::back()->withErrors($validator)->withInput();
+		} 
+
+		$data['password'] = Hash::make($data['password']);
+
+		User::create($data);
+
+		return Redirect::route('home.index');
 	}
 
 	/**

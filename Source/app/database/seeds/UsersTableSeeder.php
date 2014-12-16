@@ -15,20 +15,20 @@ class UsersTableSeeder extends BaseSeeder {
             array_push($userEmails, $currentEmail);
 
             User::create([
-                'name' => $this->faker->name(),
+                'username' => $this->faker->name(),
                 'email' => $currentEmail,
                 'password' => $this->faker->sha256()
             ]);
         }
 
         User::create([
-            'name' => 'Admin',
+            'username' => 'Admin',
             'email' => 'admin@admin.com',
             'password' => Hash::make('admin')
         ]);
 
         User::create([
-            'name' => 'User',
+            'username' => 'User',
             'email' => 'user@user.com',
             'password' => Hash::make('user')
         ]);
