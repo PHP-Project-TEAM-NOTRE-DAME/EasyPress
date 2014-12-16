@@ -17,13 +17,16 @@ class HomeController extends BaseController {
 	public function postLogin() 
 	{		
 		$data = Input::all();
-
 		$remember = isset($data['remember']);
 
 		if (Auth::attempt(array('email' => $data['email'], 'password' => $data['password']), $remember))
 		{
 		    return Redirect::intended('/');
 		}
+
+		$errors = ['summary' => ['Invalid email or password!']];
+		
+		return Redirect::back()->withErrors($errors);
 	}
 
 	public function logout()

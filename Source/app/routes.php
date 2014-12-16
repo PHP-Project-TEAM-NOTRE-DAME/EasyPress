@@ -19,12 +19,9 @@ Route::post('/post', array('as' => 'post.store', 'uses' => 'PostController@store
 Route::get('/post/{id}', array('as' => 'post.show', 'uses' => 'PostController@show'));
 Route::get('/user/{id}/posts', array('as' => 'post.show_by_user', 'uses' => 'PostController@showByUserId'));
 
-// Route::get('/user/login', array('as' => 'get.post.show', 'uses' => 'PostController@show'));
-// Route::get('/user/logout', array('as' => 'get.post.show', 'uses' => 'PostController@show'));
-Route::get('/user/create', array('as' => 'user.create', 'uses' => 'UserController@create'));
-Route::post('/user', array('as' => 'user.store', 'uses' => 'UserController@store'));
+Route::get('/user/create', array('before' => 'guest', 'as' => 'user.create', 'uses' => 'UserController@create'));
+Route::post('/user', array('before' => 'guest|csrf', 'as' => 'user.store', 'uses' => 'UserController@store'));
 
-Route::get('/login', array('as' => 'home.login', 'uses' => 'HomeController@getLogin'));
-Route::post('/login', array('as' => 'post.home.login', 'uses' => 'HomeController@postLogin'));
-
+Route::get('/login', array('before' => 'guest', 'as' => 'home.login', 'uses' => 'HomeController@getLogin'));
+Route::post('/login', array('before' => 'guest|csrf', 'as' => 'post.home.login', 'uses' => 'HomeController@postLogin'));
 Route::get('/logout', array('as' => 'home.logout', 'uses' => 'HomeController@logout'));
