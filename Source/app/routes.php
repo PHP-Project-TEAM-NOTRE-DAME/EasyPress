@@ -24,3 +24,5 @@ Route::get('/user/{id}/posts', array('as' => 'post.show_by_user', 'uses' => 'Pos
 Route::get('/user/create', array('as' => 'user.create', 'uses' => 'UserController@create'));
 Route::post('/user', array('as' => 'user.store', 'uses' => 'UserController@store'));
 
+Route::get('/login', array('as' => 'home.login', 'uses' => 'HomeController@getLogin'));
+Route::post('/login', array('as' => 'post.home.login', 'uses' => 'HomeController@postLogin'));

@@ -131,7 +131,7 @@
     {{ HTML::script('js/bootstrap.min.js') }}
 
     <!-- Custom Theme JavaScript -->
-    {{ HTML::script('js/clean-blog.js') }}
+    {{-- HTML::script('js/clean-blog.js') --}}
 
 </body>
 
