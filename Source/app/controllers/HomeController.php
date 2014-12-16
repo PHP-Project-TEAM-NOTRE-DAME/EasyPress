@@ -22,7 +22,13 @@ class HomeController extends BaseController {
 
 		if (Auth::attempt(array('email' => $data['email'], 'password' => $data['password']), $remember))
 		{
-		    return Redirect::intended();
+		    return Redirect::intended('/');
 		}
+	}
+
+	public function logout()
+	{
+		Auth::logout();
+		return Redirect::route('home.login');
 	}
 }

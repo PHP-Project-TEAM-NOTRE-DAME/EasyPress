@@ -26,3 +26,5 @@ Route::post('/user', array('as' => 'user.store', 'uses' => 'UserController@store
 
 Route::get('/login', array('as' => 'home.login', 'uses' => 'HomeController@getLogin'));
 Route::post('/login', array('as' => 'post.home.login', 'uses' => 'HomeController@postLogin'));
+
+Route::get('/logout', array('as' => 'home.logout', 'uses' => 'HomeController@logout'));

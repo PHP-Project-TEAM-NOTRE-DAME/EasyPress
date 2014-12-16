@@ -17,7 +17,7 @@
 			{{ Form::checkbox('remember') }}
 		</div>
 		<div class="form-group">
-        	{{ Form::submit('Register', ['class' => 'btn btn-default pull-right']) }}
+        	{{ Form::submit('login', ['class' => 'btn btn-default pull-right']) }}
 		</div>
     {{ Form::close() }}
 @stop
