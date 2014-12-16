@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "homepage": "https://github.com/PHP-Project-TEAM-NOTRE-DAME/EasyPress",
   "authors": [
-    "Ivaylo Papazov <papazov.ivaylo@gmail.com>"
+    "Ivaylo Papazov <papazov.ivaylo@gmail.com>",
+    "Anatoli Angelov <anatoly.angelov@gmail.com>"
   ],
   "description": "A PHP blog system",
   "license": "MIT",

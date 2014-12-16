@@ -21,8 +21,9 @@ class CommentController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+            
 	}
+	
 
 	/**
 	 * Store a newly created resource in storage.
@@ -30,9 +31,22 @@ class CommentController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store($id)
 	{
-		//
+            $data = Input::all();
+
+            $validator = Validator::make($data, Comment::$validationRules);
+            if ($validator->fails()) {
+                    return Redirect::back()->withErrors($validator)->withInput();
+            }
+
+            Comment::create([
+                    'content' => $data['content'],
+                    'user_id' => Auth::id(),
+                    'post_id' => $id
+            ]);
+
+            return Redirect::refresh();
 	}
 
 	/**

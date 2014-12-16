@@ -26,4 +26,4 @@ Route::get('/login', array('before' => 'guest', 'as' => 'home.login', 'uses' => 
 Route::post('/login', array('before' => 'guest|csrf', 'as' => 'post.home.login', 'uses' => 'HomeController@postLogin'));
 Route::get('/logout', array('as' => 'home.logout', 'uses' => 'HomeController@logout'));
 
-Route::post('/comment', 'CommentController');
+Route::post('/post/{id}', array('as' => 'comment.store', 'uses' => 'CommentController@store'));
