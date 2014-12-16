@@ -13,6 +13,7 @@
 
     {{ HTML::style('css/bootstrap.min.css') }}
     {{ HTML::style('css/clean-blog.min.css') }}
+    {{ HTML::style('css/style.css') }}
     {{ HTML::style('http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css') }}
     {{ HTML::style('http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic') }}
     {{ HTML::style('http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800') }}

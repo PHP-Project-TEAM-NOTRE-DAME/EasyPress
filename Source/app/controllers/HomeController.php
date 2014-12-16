@@ -15,18 +15,28 @@ class HomeController extends BaseController {
 	}
 
 	public function postLogin() 
-	{		
+	{
+                $validationRules = [
+                    'email' => 'required|email',
+                    'password' => 'required'
+                ];
+            
 		$data = Input::all();
 		$remember = isset($data['remember']);
-
+                $validator = Validator::make($data, $validationRules);
+                
+                if ($validator->fails()) {
+                    return Redirect::back()->withErrors($validator)->withInput();
+                }
+                
 		if (Auth::attempt(array('email' => $data['email'], 'password' => $data['password']), $remember))
 		{
 		    return Redirect::intended('/');
 		}
 
-		$errors = ['summary' => ['Invalid email or password!']];
+		$authErrors = ['summary' => ['Invalid email or password!']];
 		
-		return Redirect::back()->withErrors($errors);
+		return Redirect::back()->withErrors($authErrors);
 	}
 
 	public function logout()

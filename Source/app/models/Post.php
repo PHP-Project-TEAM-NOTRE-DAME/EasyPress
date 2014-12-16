@@ -10,7 +10,7 @@ class Post extends \Eloquent
 		'tags' => 'required'
 	];
 
-	public function commnets() 
+	public function comments() 
 	{
 		return $this->hasMany('Comment');
 	}
