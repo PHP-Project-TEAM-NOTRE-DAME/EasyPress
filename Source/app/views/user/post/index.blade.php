@@ -7,7 +7,6 @@
                 @include('post._partials.preview', ['post' => $post])
             @endforeach
 
-            <!-- Pager -->
             @include('post._partials.pager', ['posts' => $posts])
         </div>
     </div>

@@ -1,76 +1,59 @@
 <?php
 
-class UserController extends \BaseController {
+class UserPostController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
-	 * GET /user
+	 * GET /userpost
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($userId)
 	{
-		//
+		$posts = Post::where('user_id', $userId)
+			->orderBy('created_at', 'desc')
+			->paginate(5);
+			
+		return View::make('user.post.index')->with('posts', $posts);
 	}
 
 	/**
 	 * Show the form for creating a new resource.
-	 * GET /user/create
+	 * GET /userpost/create
 	 *
 	 * @return Response
 	 */
 	public function create()
 	{
-		return View::make('user.create');
+		//
 	}
 
 	/**
 	 * Store a newly created resource in storage.
-	 * POST /user
+	 * POST /userpost
 	 *
 	 * @return Response
 	 */
 	public function store()
 	{
-		$data = Input::all();
-
-		$validator = Validator::make($data, User::$validationRules);
-		if ($validator->fails()) {
-			return Redirect::back()->withErrors($validator)->withInput();
-		} 
-
-		$data['password'] = Hash::make($data['password']);
-
-		User::create($data);
-
-		return Redirect::route('home.index');
+		//
 	}
 
 	/**
 	 * Display the specified resource.
-	 * GET /user/{id}
+	 * GET /userpost/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function show($id)
 	{
-		// Coooooooooooooooooooooooooooooool !!!!!
-		$user = User::with([
-			'posts' => function($query) {
-				$query
-					->with('user')
-					->orderBy('created_at', 'desc')->take(4);
-			}])
-			->find($id);
-
-		// dd(DB::getQueryLog());
-		return View::make('user.show')->with('user', $user);
+		//
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /user/{id}/edit
+	 * GET /userpost/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -82,7 +65,7 @@ class UserController extends \BaseController {
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /user/{id}
+	 * PUT /userpost/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -94,7 +77,7 @@ class UserController extends \BaseController {
 
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /user/{id}
+	 * DELETE /userpost/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response

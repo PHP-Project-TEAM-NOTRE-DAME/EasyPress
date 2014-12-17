@@ -17,10 +17,12 @@ Route::get('/post', array('as' => 'post.index', 'uses' => 'PostController@index'
 Route::get('/post/create', array('as' => 'post.create', 'uses' => 'PostController@create'));
 Route::post('/post', array('before' => 'auth|csrf', 'as' => 'post.store', 'uses' => 'PostController@store'));
 Route::get('/post/{id}', array('as' => 'post.show', 'uses' => 'PostController@show'));
-Route::get('/user/{id}/posts', array('as' => 'post.show_by_user', 'uses' => 'PostController@showByUserId'));
+
+	Route::get('/user/{id}/post', array('as' => 'user.post.index', 'uses' => 'UserPostController@index'));
 
 Route::get('/user/create', array('before' => 'guest', 'as' => 'user.create', 'uses' => 'UserController@create'));
 Route::post('/user', array('before' => 'guest|csrf', 'as' => 'user.store', 'uses' => 'UserController@store'));
+Route::get('/user/{id}', array('as' => 'user.show', 'uses' => 'UserController@show'));
 
 Route::get('/login', array('before' => 'guest', 'as' => 'home.login', 'uses' => 'HomeController@getLogin'));
 Route::post('/login', array('before' => 'guest|csrf', 'as' => 'post.home.login', 'uses' => 'HomeController@postLogin'));

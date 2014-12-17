@@ -10,7 +10,9 @@ class PostController extends \BaseController {
 	 */
 	public function index()
 	{
-            $allPosts = Post::with('user')->get();
+            $allPosts = Post::with('user')
+				->orderBy('created_at', 'desc')
+	            ->paginate(5);
 
             return View::make('post.index')->with('posts', $allPosts);
 	}
@@ -66,13 +68,6 @@ class PostController extends \BaseController {
 		$post = Post::with('user')->find($id);
 
 		return View::make('post.show')->with('post', $post);
-	}
-
-	public function showByUserId($id)
-	{
-		$posts = Post::where('user_id', $id)->get();
-
-		return View::make('post.showByUserId')->with('posts', $posts);
 	}
 
 	/**

@@ -8,7 +8,7 @@
                 <h2 class="section-heading"> {{{ $post->title }}}</h2>
                 <p> {{{ $post->content }}}</p>
                 <p class="post-meta">Posted by
-                    {{ HTML::linkRoute('post.show_by_user', $post->user->username, array($post->user->id)); }}
+                    {{ HTML::linkRoute('user.post.index', $post->user->username, array($post->user->id)); }}
                     on {{{ date('d F, Y', strtotime($post->created_at)) }}}</p>
             </div>
         </div>
