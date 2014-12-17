@@ -59,6 +59,18 @@
                     <li>
                         <a href="contact.html">Contact</a>
                     </li>
+                    @if (Auth::check())
+                    <li>
+                        <a href="#">Log out</a>
+                    </li>
+                    @else
+                        <li>
+                            <a href="#">Log in</a>
+                        </li>
+                        <li>
+                            <a href="#">Register</a>
+                        </li>
+                    @endif
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
