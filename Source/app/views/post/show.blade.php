@@ -33,7 +33,7 @@
                 </a>
               <div class="media-body">
                 <p>{{{ $comment->content }}}</p>
-                <p class="text-muted small-text">Commented by {{{ $comment->user->username }}} on {{{ date('d F, Y', strtotime($comment->created_at)) }}}</p>
+                <p class="text-muted small-text">Commented by {{{ $comment->user->username or 'Guest' }}} on {{{ date('d F, Y', strtotime($comment->created_at)) }}}</p>
               </div>
             </div>  
             <hr>
