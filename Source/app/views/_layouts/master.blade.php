@@ -19,6 +19,8 @@
     {{ HTML::style('http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800') }}
     {{ HTML::style('lib/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}
 
+    <link rel="shortcut icon" href="./img/pug.ico">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -53,6 +55,7 @@
                     @if (Auth::check())
                     <li>
                         {{HTML::linkRoute('home.logout','Log out')}}
+                         <p>Welcome!<p>
                     </li>
                     @else
                         <li>
@@ -71,7 +74,7 @@
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url({{asset('img/home-bg.jpg')}})">
+    <header class="intro-header" style="background-image: url({{asset('img/home.jpg')}})">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
