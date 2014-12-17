@@ -7,7 +7,7 @@
     	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 		    <ul class="pager">
 		        <li class="next">
-		            {{ HTML::linkRoute('user.post.index', 'All Posts', ['id' => $user->id]) }}
+		            {{ HTML::linkRoute('user.post.index', "All Posts by $user->username", ['id' => $user->id]) }}
 		        </li>
 		    </ul>
 		</div>

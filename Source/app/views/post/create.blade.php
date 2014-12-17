@@ -21,4 +21,5 @@
             {{ Form::submit('Submit New Post', ['class' => 'btn btn-default pull-right']) }}
         </div>
     {{ Form::close() }}
+    
 @stop

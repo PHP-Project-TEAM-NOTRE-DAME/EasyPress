@@ -37,10 +37,26 @@ class PostController extends \BaseController {
 	public function store()
 	{
         $data = Input::all();
+		$postValidator = Validator::make($data, Post::$validationRules);
+		if ($postValidator->fails()) {
+			return Redirect::back()->withErrors($postValidator)->withInput();
+		}
 
-		$validator = Validator::make($data, Post::$validationRules);
-		if ($validator->fails()) {
-			return Redirect::back()->withErrors($validator)->withInput();
+   		$dbTagIds = [];
+        $tags = $data['tags'];
+		foreach ($tags as $tag) {
+			$dbTag = Tag::where('name', $tag)->first();
+
+			if (is_null($dbTag)) {
+		        $tagValidator = Validator::make(['name' =>$tag], Tag::$validationRules);
+		 		if ($tagValidator->fails()) {
+					return Redirect::back()->withErrors($tagValidator)->withInput();
+				}
+
+				$dbTag = Tag::create(['name' => $tag]);
+			}
+       		
+			array_push($dbTagIds, $dbTag->id);
 		}
 
 		$newPost = Post::create([
@@ -49,11 +65,9 @@ class PostController extends \BaseController {
 			'user_id' => Auth::id()
 		]);
 
-		// TODO: Validate tags!
-		$tags = Tag::whereIn('name', $data['tags'])->lists('id'); 
-        $newPost->tags()->attach($tags);
+        $newPost->tags()->attach($dbTagIds);
 
-		return Redirect::route('home.index');
+		return Redirect::route('post.show', ['id' => $newPost->id]);
 	}
 
 	/**
