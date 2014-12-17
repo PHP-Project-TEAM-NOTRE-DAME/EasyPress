@@ -81,7 +81,7 @@
                     <div class="site-heading">
                         <h1>EasyPress</h1>
                         <hr class="small">
-                        <span class="subheading">To be or not to be <br> (a pug)</span>
+                        <span class="subheading">An easypress slogan here!</span>
                     </div>
                 </div>
             </div>
