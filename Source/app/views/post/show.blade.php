@@ -12,7 +12,20 @@
                     on {{{ date('d F, Y', strtotime($post->created_at)) }}}</p>
             </div>
         </div>
+        
         {{ Form::open(array('route' => ['comment.store', $post->id ], 'method' => 'post')) }}
+        @if (!Auth::check())
+        <div class="form-group col-md-8 col-md-offset-2">
+            {{ Form::label('name', 'Enter your name') }}
+            {{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Name']) }}
+            {{ $errors->first('name', '<p class="error text-danger">:message</p>') }}
+        </div>
+        <div class="form-group col-md-8 col-md-offset-2">
+            {{ Form::label('email', 'Enter your email /optional/') }}
+            {{ Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Email']) }}
+            {{ $errors->first('email', '<p class="error text-danger">:message</p>') }}
+        </div>
+        @endif
     	<div class="form-group col-md-8 col-md-offset-2">
             {{ Form::label('content', 'Comment') }}
             {{ Form::textarea('content', null, ['class' => 'form-control', 'placeholder' => 'Write your comment here']) }}
@@ -33,7 +46,7 @@
                 </a>
               <div class="media-body">
                 <p>{{{ $comment->content }}}</p>
-                <p class="text-muted small-text">Commented by {{{ $comment->user->username or 'Guest' }}} on {{{ date('d F, Y', strtotime($comment->created_at)) }}}</p>
+                <p class="text-muted small-text">Commented by {{{ $comment->user->username or $comment->name }}} on {{{ date('d F, Y', strtotime($comment->created_at)) }}}</p>
               </div>
             </div>  
             <hr>

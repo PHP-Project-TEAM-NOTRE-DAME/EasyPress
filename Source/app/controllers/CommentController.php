@@ -33,20 +33,26 @@ class CommentController extends \BaseController {
 	 */
 	public function store($id)
 	{
-            $data = Input::all();
+        $data = Input::all();
 
-            $validator = Validator::make($data, Comment::$validationRules);
-            if ($validator->fails()) {
-                    return Redirect::back()->withErrors($validator)->withInput();
-            }
+        $validator = Validator::make($data, Comment::$validationRules);
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+        
+        $newComment = new Comment();
+        $newComment->content = $data['content'];
+        $newComment->post_id = $id;
+        if (Auth::check()) {
+            $newComment->user_id = Auth::id();
+        } else {
+            $newComment->name = $data['name'];
+            $newComment->email = $data['email'];
+        }
 
-            Comment::create([
-                    'content' => $data['content'],
-                    'user_id' => Auth::id(),
-                    'post_id' => $id
-            ]);
+        $newComment->save();
 
-            return Redirect::refresh();
+        return Redirect::refresh();
 	}
 
 	/**
