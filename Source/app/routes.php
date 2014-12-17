@@ -29,3 +29,7 @@ Route::post('/login', array('before' => 'guest|csrf', 'as' => 'post.home.login',
 Route::get('/logout', array('as' => 'home.logout', 'uses' => 'HomeController@logout'));
 
 Route::post('/post/{id}', array('as' => 'comment.store', 'uses' => 'CommentController@store'));
+
+Route::get('/other/about',function(){
+    return View::make("/other/about");
+});
