@@ -1,3 +1,7 @@
 <div class="text-center">
-    {{ $posts->appends($parameters)->links() }}
+	@if (isset($parameters))
+	    {{ $posts->appends($parameters)->links() }}
+    @else
+	    {{ $posts->links() }}
+    @endif
 </div>
