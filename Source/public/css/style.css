@@ -2,3 +2,7 @@
     font-size: 0.75em;
     color: #ccc;
 }
+
+textarea {
+    resize: none;
+}

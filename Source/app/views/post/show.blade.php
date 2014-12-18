@@ -7,6 +7,13 @@
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <h2 class="section-heading"> {{{ $post->title }}}</h2>
                 <p> {{ $post->content }}</p>
+                @if(Auth::check() && Auth::user()->posts()->find($post->id))
+                {{HTML::linkRoute('post.edit', 'Edit', ['id' => $post->id], ['class' => 'btn btn-success'])}}
+                @endif
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-lg-offset-2 col-md-8 col-md-offset-1">
                 <p class="post-meta">Posted by
                     {{ HTML::linkRoute('user.post.index', $post->user->username, array($post->user->id)); }}
                     on {{{ date('d F, Y', strtotime($post->created_at)) }}}</p>
