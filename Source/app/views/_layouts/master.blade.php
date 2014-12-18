@@ -52,10 +52,18 @@
                     <li>
                         {{HTML::linkRoute('home.index','Home')}}
                     </li>
+                    <li>
+                        {{HTML::link('/other/about','About')}}
+                    </li>
                     @if (Auth::check())
                     <li>
+                        {{HTML::linkRoute('user.show', Auth::user()->username, ['id' => Auth::id()])}}
+                    </li>
+                    <li>
+                        {{HTML::linkRoute('post.create','New post')}}
+                    </li>
+                    <li>
                         {{HTML::linkRoute('home.logout','Log out')}}
-                         <p>Welcome!<p>
                     </li>
                     @else
                         <li>
@@ -64,6 +72,7 @@
                         <li>
                             {{HTML::linkRoute('user.create','Register')}}
                         </li>
+                        
                     @endif
                 </ul>
             </div>
