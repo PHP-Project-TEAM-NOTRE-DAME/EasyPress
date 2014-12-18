@@ -1,9 +1,6 @@
 @extends('_layouts.master')
 
 @section('container')
-    @if (Auth::check())
-        Logged!
-    @endif
 
     @include('post._partials.latest-posts', ['posts' => $posts])
 

@@ -35,3 +35,7 @@ Route::post('/post/{id}', array('as' => 'comment.store', 'uses' => 'CommentContr
 Route::get('/other/about',function(){
     return View::make("/other/about");
 });
+
+Route::get('/search',function(){
+    return View::make("search");
+});
