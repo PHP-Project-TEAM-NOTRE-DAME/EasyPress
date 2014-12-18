@@ -7,9 +7,18 @@
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <h2 class="section-heading"> {{{ $post->title }}}</h2>
                 <p> {{ $post->content }}</p>
-                @if(Auth::check() && Auth::user()->posts()->find($post->id))
-                {{HTML::linkRoute('post.edit', 'Edit', ['id' => $post->id], ['class' => 'btn btn-success'])}}
-                @endif
+                <div class="btn-toolbar">
+                    @if(Auth::check() && Auth::user()->posts()->find($post->id))
+                    <div class="btn-group">
+                        {{HTML::linkRoute('post.edit', 'Edit', ['id' => $post->id], ['class' => 'btn btn-success'])}}
+                    </div>
+                    @endif
+                    <div class="btn-group">
+                        @foreach($post->tags as $tag)
+                            {{HTML::linkRoute('home.index', $tag->name, null, ['class' => 'btn btn-default'])}}
+                        @endforeach
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
