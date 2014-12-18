@@ -17,6 +17,8 @@ Route::get('/post', array('as' => 'post.index', 'uses' => 'PostController@index'
 Route::get('/post/create', array('as' => 'post.create', 'uses' => 'PostController@create'));
 Route::post('/post', array('before' => 'auth|csrf', 'as' => 'post.store', 'uses' => 'PostController@store'));
 Route::get('/post/{id}', array('as' => 'post.show', 'uses' => 'PostController@show'));
+Route::get('/post/{id}/edit', array('before' => 'auth|isOwn', 'as' => 'post.edit', 'uses' => 'PostController@edit'));
+Route::put('/post/{id}', array('before' => 'auth|isOwn|csrf', 'as' => 'post.update', 'uses' => 'PostController@update'));
 
 	Route::get('/user/{id}/post', array('as' => 'user.post.index', 'uses' => 'UserPostController@index'));
 

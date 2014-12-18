@@ -25,7 +25,7 @@ class PostController extends \BaseController {
 	 */
 	public function create()
 	{
-            return View::make('post.create');
+        return View::make('post.create');
 	}
 
 	/**
@@ -42,21 +42,12 @@ class PostController extends \BaseController {
 			return Redirect::back()->withErrors($postValidator)->withInput();
 		}
 
-   		$dbTagIds = [];
-        $tags = $data['tags'];
-		foreach ($tags as $tag) {
-			$dbTag = Tag::where('name', $tag)->first();
-
-			if (is_null($dbTag)) {
-		        $tagValidator = Validator::make(['name' =>$tag], Tag::$validationRules);
-		 		if ($tagValidator->fails()) {
-					return Redirect::back()->withErrors($tagValidator)->withInput();
-				}
-
-				$dbTag = Tag::create(['name' => $tag]);
-			}
-       		
-			array_push($dbTagIds, $dbTag->id);
+		$tagBuilder = new TagBuilder($data['tags']);
+		if ($tagBuilder->isValid()) {
+	        $tagIds = $tagBuilder->getIds();
+		}
+		else {
+			return Redirect::back()->withErrors($tagBuilder->getErrors())->withInput();
 		}
 
 		$newPost = Post::create([
@@ -65,7 +56,7 @@ class PostController extends \BaseController {
 			'user_id' => Auth::id()
 		]);
 
-        $newPost->tags()->attach($dbTagIds);
+        $newPost->tags()->attach($tagIds);
 
 		return Redirect::route('post.show', ['id' => $newPost->id]);
 	}
@@ -93,7 +84,9 @@ class PostController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$post = Post::find($id);
+
+		return View::make('post.edit')->with('post', $post);
 	}
 
 	/**
@@ -105,7 +98,25 @@ class PostController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$data = Input::all();
+
+		$postValidator = Validator::make($data, Post::$validationRules);
+		if ($postValidator->fails()) {
+			return Redirect::back()->withErrors($postValidator)->withInput();
+		}
+
+		$tagBuilder = new TagBuilder($data['tags']);
+		if ($tagBuilder->isValid()) {
+	        $tagIds = $tagBuilder->getIds();
+		}
+		else {
+			return Redirect::back()->withErrors($tagBuilder->getErrors())->withInput();
+		}
+
+		Post::find($id)->update($data);
+		Post::find($id)->tags()->sync($tagIds);
+
+		return Redirect::route('post.show', ['id' => $id]);
 	}
 
 	/**
@@ -119,5 +130,4 @@ class PostController extends \BaseController {
 	{
 		//
 	}
-
 }

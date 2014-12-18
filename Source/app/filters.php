@@ -88,3 +88,13 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+
+Route::filter('isOwn', function($route) 
+{
+	$postId = $route->getParameter('id');
+	
+	if (is_null(Auth::user()->posts()->find($postId))) {
+		return Redirect::route('home.index');
+	}
+});

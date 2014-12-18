@@ -10,6 +10,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "bootstrap-tagsinput": "~0.4.2"
+    "bootstrap-tagsinput": "~0.4.2",
+    "typeahead.js": "~0.10.5"
   }
 }

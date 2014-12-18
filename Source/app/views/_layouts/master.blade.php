@@ -141,7 +141,7 @@
     <!-- Custom Theme JavaScript -->
     {{-- HTML::script('js/clean-blog.js') --}}
 
-    {{ HTML::script('lib/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}
+    @yield('scripts');
 
 </body>
 

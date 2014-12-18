@@ -21,7 +21,7 @@ class HomeController extends BaseController {
                     'password' => 'required'
                 ];
             
-		$data = Input::all();
+		$data = Input::all();	
 		$remember = isset($data['remember']);
                 $validator = Validator::make($data, $validationRules);
                 
