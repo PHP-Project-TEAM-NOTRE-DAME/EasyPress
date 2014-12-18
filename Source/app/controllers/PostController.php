@@ -10,11 +10,28 @@ class PostController extends \BaseController {
 	 */
 	public function index()
 	{
-            $allPosts = Post::with('user')
-				->orderBy('created_at', 'desc')
-	            ->paginate(5);
+		$query = Post::query();
+		
+		$parameters = [];
+		$orderTypes = [
+			'date' => 'created_at',
+			'views' => 'view_count',
+			'title' => 'title'
+		];
 
-            return View::make('post.index')->with('posts', $allPosts);
+		if (Input::get('order') && array_key_exists(Input::get('order'), $orderTypes)) {
+			$orderName = Input::get('order');
+			$direction = Input::get('dir') === 'asc' ? 'asc' : 'desc';
+
+			$query->orderBy($orderTypes[$orderName], $direction);
+
+			$parameters['order'] = $orderName;
+			$parameters['dir'] = $direction;
+		}
+
+		$posts = $query->paginate(5);
+
+        return View::make('post.index')->with(['posts' => $posts, 'parameters' => $parameters]);
 	}
 
 	/**
@@ -70,7 +87,7 @@ class PostController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$post = Post::with('user')->find($id);
+		$post = Post::with(['user', 'tags'])->find($id);
         
         $post->view_count++;
         $post->save();

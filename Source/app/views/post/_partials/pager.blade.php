@@ -1,3 +1,3 @@
 <div class="text-center">
-    {{ $posts->links() }}
+    {{ $posts->appends($parameters)->links() }}
 </div>
