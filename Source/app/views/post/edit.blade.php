@@ -37,4 +37,9 @@
 
 @section('scripts')
     {{ HTML::script('lib/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}
+    {{ HTML::script('lib/ckeditor/ckeditor.js') }}
+
+    <script>
+        CKEDITOR.replace('content');
+    </script>
 @stop

@@ -6,7 +6,7 @@ class Post extends \Eloquent
         
         public static $validationRules = [
 		'title' => 'required|min:3',
-		'content' => 'required|min:100',
+		'content' => 'required|min:10',
 		'tags' => 'required'
 	];
 

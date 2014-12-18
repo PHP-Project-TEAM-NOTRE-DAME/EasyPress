@@ -11,6 +11,6 @@
   "private": true,
   "dependencies": {
     "bootstrap-tagsinput": "~0.4.2",
-    "typeahead.js": "~0.10.5"
+    "ckeditor": "~4.4.6"
   }
 }
