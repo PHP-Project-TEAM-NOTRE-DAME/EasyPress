@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration {
 			$table->string('title');
 			$table->text('content');
 			$table->integer('user_id');
-            $table->integer('view_count');
+            $table->integer('view_count')->default(0);
 			$table->timestamps();
 		});
 	}

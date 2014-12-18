@@ -25,7 +25,7 @@
             <div class="col-lg-6 col-lg-offset-2 col-md-8 col-md-offset-1">
                 <p class="post-meta">Posted by
                     {{ HTML::linkRoute('user.post.index', $post->user->username, array($post->user->id)); }}
-                    on {{{ date('d F, Y', strtotime($post->created_at)) }}}</p>
+                    on {{{ date('d F, Y', strtotime($post->created_at)) }}}, Views: {{ $post->view_count }}</p>
             </div>
         </div>
         
