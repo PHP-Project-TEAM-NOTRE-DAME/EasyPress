@@ -4,7 +4,7 @@
             {{{ $post->title }}}
         </h2>
         <h3 class="post-subtitle">
-            {{{ substr($post->content, 0, 150) }}}...
+            {{{ trim(substr(preg_replace('/<.+?>/', '', $post->content), 0, 150)) }}}...
         </h3>
     </a>
     <p>Posted by {{ HTML::linkRoute('user.show', $post->user->username, ['id' => $post->user->id]) }} on 
